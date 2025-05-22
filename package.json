@@ -1,0 +1,22 @@
+{
+  "name": "ci-cd-licious",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "test": "echo \"Running tests...\" && exit 0",
+  "build": "echo \"Building project...\""
+},
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tilak-7/CI-CD-licious.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tilak-7/CI-CD-licious/issues"
+  },
+  "homepage": "https://github.com/Tilak-7/CI-CD-licious#readme"
+}
