@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: "CI-CD-licious 🚀"
 
 on:
   push:
@@ -27,5 +27,5 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Deploy
-        run: echo "Deploying to production..."
+      - name: Deploy (Mock)
+        run: echo "🚀 Deploying CI-CD-licious to production..."
