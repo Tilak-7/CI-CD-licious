@@ -3,38 +3,29 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - develop
       - main
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3  # updated version to v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3  # updated version to v3
         with:
-          node-version: '16'
+          node-version: '14'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Run tests
+      - name: Run Tests
         run: npm test
 
-  deploy:
-    needs: build-and-test         # wait for build job to finish successfully
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'  # deploy only on main branch
+      - name: Build Project
+        run: npm run build
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Deploy to production server
-        run: |
-          echo "Deploying to production!"
-          # Add your deployment script here, e.g., ssh commands or cloud deploy CLI
+      - name: Deploy
+        run: echo "Deploying to production..."
