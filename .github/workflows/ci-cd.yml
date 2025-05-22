@@ -1,0 +1,33 @@
+name: CI/CD Pipeline
+
+# Events that trigger the workflow:
+on:
+  push:
+    branches:
+      - main      # Run the workflow when code is pushed to main branch
+  pull_request:
+    branches:
+      - main      # Run the workflow on pull requests targeting main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Use the latest Ubuntu runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2     # Checkout the repository code
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2   # Set up Node.js environment
+        with:
+          node-version: '14'           # Specify the Node.js version to use
+
+      - name: Install dependencies
+        run: npm install             # Install dependencies from package.json
+
+      - name: Run tests
+        run: npm test                # Run tests with the test command
+
+permissions:
+  contents: read     # Read-only access to repo contents
+  issues: write      # Allow writing to issues (optional)
